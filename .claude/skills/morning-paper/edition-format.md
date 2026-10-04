@@ -54,6 +54,13 @@ out anything you have nothing good for and the layout closes up around it. See
     ]
   },
 
+  "more": {                                  // ONLY when there are no newsletters (e.g. no Gmail):
+    "title": "More to read",                  // fills the inbox column with 4–5 extra stories,
+    "items": [                                // 260–340 words in total (sport, science, culture...)
+      { "label": "Science", "headline": "≤ 10 words", "body": "≤ 70 words", "source": "BBC News" }
+    ]
+  },
+
   "local": { "items": [                       // 3–4 items, 150–210 words in total
     { "label": "Event", "when": "Sat", "headline": "≤ 9 words", "body": "≤ 45 words" }
   ] },

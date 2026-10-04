@@ -130,6 +130,7 @@
 
   <div class="p2">
     <div class="col">
+      {% if inbox.newsletters or not more_items %}
       <section class="box grow" data-fit="from your inbox">
         <h3>From your inbox <small>{{ newsletter_names }}</small></h3>
         {% for nl in inbox.newsletters %}
@@ -143,6 +144,19 @@
         <p class="empty">No new newsletters since the last edition.</p>
         {% endfor %}
       </section>
+      {% else %}
+      <section class="box grow" data-fit="more to read">
+        <h3>{{ more_title }}</h3>
+        {% for it in more_items %}
+        <div class="newsletter">
+          {% if it.label %}<div class="nl-from">{{ it.label }}</div>{% endif %}
+          <h4>{{ it.headline }}</h4>
+          {% if it.body %}<p>{{ it.body }}</p>{% endif %}
+          {% if it.source %}<span class="src">{{ it.source }}</span>{% endif %}
+        </div>
+        {% endfor %}
+      </section>
+      {% endif %}
     </div>
 
     <div class="col">

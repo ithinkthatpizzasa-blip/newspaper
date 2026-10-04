@@ -41,7 +41,9 @@ If a source is blocked by the network, tell the reader in the final report which
 
 ## 2. Read the inbox
 
-Needs the Gmail connector. If its tools aren't available, skip this step and say so in the report.
+Needs the Gmail connector. If its tools aren't available, skip this step, fill `more` with
+4 or 5 extra stories from the web instead (sport, science, culture, something quirky; see
+edition-format.md) so page 2 stays full, and say so in the report.
 
 - **Newsletters**: for each entry in `profile.email.newsletters`, search
   `<query> newer_than:1d` (use `newer_than:4d` for the first edition or if nothing turns up), open

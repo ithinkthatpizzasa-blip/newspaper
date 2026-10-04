@@ -25,6 +25,14 @@ class Html(unittest.TestCase):
         self.assertNotIn("£24.99", html)
         self.assertNotIn("Dr Smith", html)
 
+    def test_more_to_read_replaces_an_empty_inbox(self):
+        edition = {"date": "2026-10-04", "more": {"items": [{"label": "Science", "headline": "Comet spotted"}]}}
+        html = render_html(PROFILE, edition)
+        self.assertIn("More to read", html)
+        self.assertIn("Comet spotted", html)
+        self.assertNotIn("From your inbox", html)
+        self.assertIn("From your inbox", render_html(PROFILE, SAMPLE))
+
     def test_minimal_edition(self):
         html = render_html(PROFILE, {"date": "2026-10-04"})
         self.assertIn("The Alex Times", html)

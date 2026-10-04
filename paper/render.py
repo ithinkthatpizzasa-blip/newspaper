@@ -175,6 +175,8 @@ def build_context(profile: dict, edition: dict, embed_fonts: bool = False) -> di
         "inbox": inbox,
         "newsletter_names": ", ".join(names),
         "local": local,
+        "more_title": (ed.get("more") or {}).get("title") or "More to read",
+        "more_items": (ed.get("more") or {}).get("items") or [],
         "comic": comic,
         "comic_html": Markup(strip_html(comic, look, wx["kind"] if wx else "partly-cloudy")) if panels else "",
         "n_panels": min(len(panels), 4),

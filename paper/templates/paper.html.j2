@@ -88,6 +88,9 @@
             {% if wx.wind %}<li><b>Wind</b> {{ wx.wind }}</li>{% endif %}
             {% if wx.sunrise %}<li><b>Sun</b> up {{ wx.sunrise }}, down {{ wx.sunset }}</li>{% endif %}
           </ul>
+          {% if wx.hours %}
+            <div class="hours">{% for h in wx.hours[:5] %}<div><span class="d">{{ h.time }}</span>{{ temp(h.temp) }}</div>{% endfor %}</div>
+          {% endif %}
           {% if wx.advice %}<div class="advice">{{ wx.advice }}</div>{% endif %}
           {% if wx.outlook %}
             <div class="outlook">

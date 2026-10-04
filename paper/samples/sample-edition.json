@@ -11,6 +11,28 @@
     "sunrise": "07:16",
     "sunset": "18:39",
     "advice": "Sunglasses for the morning, a brolly for the walk home, and a jumper for after dark.",
+    "hours": [
+      {
+        "time": "9am",
+        "temp": 10
+      },
+      {
+        "time": "Noon",
+        "temp": 14
+      },
+      {
+        "time": "3pm",
+        "temp": 15
+      },
+      {
+        "time": "6pm",
+        "temp": 13
+      },
+      {
+        "time": "9pm",
+        "temp": 10
+      }
+    ],
     "outlook": [
       {
         "day": "Tue",

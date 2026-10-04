@@ -72,7 +72,8 @@ Write `build/<date>/edition.json` following [edition-format.md](edition-format.m
 | Box | Target |
 | --- | --- |
 | Lead story | 230 to 300 words in 4 to 6 paragraphs, plus a standfirst |
-| Headlines box | 6 to 8 headlines; a summary of up to 12 words only where the headline needs it |
+| Headlines box | 6 to 8 headlines; a summary of up to 12 words only where the headline needs it (real headlines are long, so usually none) |
+| Weather | today's numbers, up to 5 hourly temperatures (`hours`) and the 3-day outlook from `sources.json` |
 | Each section | 3 stories: headline up to 8 words, 15 to 22 words of text |
 | From your inbox | 260 to 340 words across the newsletters |
 | Around `<city>` | 3 or 4 items, 150 to 210 words in total |
@@ -84,8 +85,9 @@ Editorial rules:
 - The lead is the most important story for this reader today (their interests and location).
   Sections follow `profile.interests`; don't repeat a story in two places.
 - **Headlines box** (when `profile.headlines` is set): the first items of `top_headlines` in the
-  feed's order, with the headline text copied exactly. Skip items older than 36 hours, duplicates
-  and video-only items. It is a faithful list, so it may overlap with the lead. It takes the first
+  feed's order, with the headline text copied exactly. Skip items older than 36 hours and
+  duplicates. Drop a leading "Watch:" or "Live:" label (there's nothing to watch on paper), but skip
+  an item whose headline makes no sense without its video. It is a faithful list, so it may overlap with the lead. It takes the first
   column of the front-page row, leaving room for two sections: write those for the interests other
   than general news (a section called "News" is dropped first). Set `as_of` to the time you read it.
 - Only facts from sources you actually read today. No invented quotes, numbers or events. Put the

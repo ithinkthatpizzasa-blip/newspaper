@@ -51,6 +51,11 @@ class Html(unittest.TestCase):
         self.assertIn('data-fit="Business"', html)
         self.assertNotIn('data-fit="News"', html)
 
+    def test_hourly_temperatures(self):
+        html = render_html(PROFILE, SAMPLE)
+        self.assertIn('class="hours"', html)
+        self.assertIn("Noon", html)
+
     def test_minimal_edition(self):
         html = render_html(PROFILE, {"date": "2026-10-04"})
         self.assertIn("The Alex Times", html)

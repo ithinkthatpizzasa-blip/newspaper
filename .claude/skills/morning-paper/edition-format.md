@@ -17,6 +17,7 @@ out anything you have nothing good for and the layout closes up around it. See
     "wind": "Breezy, gusts to 20 mph",        // optional
     "sunrise": "07:16", "sunset": "18:39",    // optional, 24h
     "advice": "Sunglasses now, brolly later.",       // ≤ 14 words, optional
+    "hours": [{ "time": "9am", "temp": 11 }],        // up to 5 times of day, optional
     "outlook": [                              // next 3 days
       { "day": "Mon", "kind": "rain", "high": 14, "low": 9 }
     ],

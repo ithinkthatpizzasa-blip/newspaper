@@ -173,6 +173,22 @@ def headlines(profile: dict, problems: list[str]) -> dict[str, list[dict]]:
     return out
 
 
+def top_headlines(profile: dict, problems: list[str]) -> dict | None:
+    """The front-page headlines box: one feed (the BBC's top stories by default), in the feed's order."""
+    cfg = profile.get("headlines") or {}
+    url = cfg.get("feed")
+    if not url:
+        return None
+    title = cfg.get("title") or "Headlines"
+    try:
+        items = feed(url, limit=max(int(cfg.get("count") or 7) * 2, 12))
+    except (SourceError, ET.ParseError) as exc:
+        problems.append(f"{title}: {exc}")
+        return None
+    return {"title": title, "source": cfg.get("source") or "", "count": int(cfg.get("count") or 7),
+            "items": items}
+
+
 # --------------------------------------------------------------------------- calendar
 
 def calendar(url: str, tz: str, day: date, days_ahead: int = 6) -> dict:
@@ -223,6 +239,9 @@ def gather(profile: dict, day: date | None = None) -> dict:
     else:
         problems.append("weather: no latitude/longitude in profile.json")
 
+    top = top_headlines(profile, problems)
+    if top:
+        out["top_headlines"] = top
     out["headlines"] = headlines(profile, problems)
     if not out["headlines"]:
         problems.append("headlines: none fetched")

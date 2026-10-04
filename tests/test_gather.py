@@ -78,6 +78,30 @@ class Feeds(unittest.TestCase):
         self.assertEqual(feeds["Local"], ["https://local.test/rss"])
 
 
+class TopHeadlines(unittest.TestCase):
+    PROFILE = {"headlines": {"title": "BBC headlines", "source": "BBC News",
+                             "feed": "https://feeds.bbci.co.uk/news/rss.xml", "count": 7}}
+
+    def test_feed_order_is_kept(self):
+        problems = []
+        with mock.patch.object(gather, "_get", return_value=RSS):
+            top = gather.top_headlines(self.PROFILE, problems)
+        self.assertEqual([i["title"] for i in top["items"]], ["Diesel passes £2 a litre", "Second story"])
+        self.assertEqual((top["title"], top["source"], top["count"]), ("BBC headlines", "BBC News", 7))
+        self.assertEqual(problems, [])
+
+    def test_not_configured(self):
+        self.assertIsNone(gather.top_headlines({}, []))
+
+    def test_blocked_feed_is_reported(self):
+        def blocked(url, timeout=15):
+            raise gather.SourceError("feeds.bbci.co.uk is blocked by this machine's network policy")
+        problems = []
+        with mock.patch.object(gather, "_get", side_effect=blocked):
+            self.assertIsNone(gather.top_headlines(self.PROFILE, problems))
+        self.assertEqual(problems, ["BBC headlines: feeds.bbci.co.uk is blocked by this machine's network policy"])
+
+
 class Weather(unittest.TestCase):
     def test_open_meteo_mapping(self):
         with mock.patch.object(gather, "_get", return_value=json.dumps(METEO).encode()):

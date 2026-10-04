@@ -33,6 +33,24 @@ class Html(unittest.TestCase):
         self.assertNotIn("From your inbox", html)
         self.assertIn("From your inbox", render_html(PROFILE, SAMPLE))
 
+    def test_headlines_box_takes_the_first_column(self):
+        html = render_html(PROFILE, SAMPLE)
+        row = html[html.index('class="sections"'):]
+        self.assertEqual(row.count('class="hl-list"'), 1)
+        self.assertLess(row.index("BBC headlines"), row.index('data-fit="Technology"'))
+        self.assertIn("Source: BBC News", row)
+
+    def test_headlines_box_pushes_out_the_news_section(self):
+        story = [{"headline": "H", "body": "b"}]
+        edition = {"date": "2026-10-04",
+                   "headlines": {"title": "BBC headlines", "items": [{"headline": "One"}, {"headline": "Two"}]},
+                   "sections": [{"name": "News", "stories": story}, {"name": "Technology", "stories": story},
+                                {"name": "Business", "stories": story}]}
+        html = render_html(PROFILE, edition)
+        self.assertIn('data-fit="Technology"', html)
+        self.assertIn('data-fit="Business"', html)
+        self.assertNotIn('data-fit="News"', html)
+
     def test_minimal_edition(self):
         html = render_html(PROFILE, {"date": "2026-10-04"})
         self.assertIn("The Alex Times", html)

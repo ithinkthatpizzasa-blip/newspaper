@@ -31,7 +31,16 @@ out anything you have nothing good for and the layout closes up around it. See
     "source": "BBC News"
   },
 
-  "sections": [                               // up to 3, shown left to right on page 1
+  "headlines": {                              // front-page headlines box, when profile.headlines is set
+    "title": "BBC headlines",                 // "Today's headlines" if the feed couldn't be read
+    "source": "BBC News",
+    "as_of": "6:40am",                        // when the feed was read
+    "items": [                                // 6–8, in the feed's order, wording unchanged
+      { "headline": "The feed's own headline", "summary": "optional, ≤ 12 words" }
+    ]
+  },
+
+  "sections": [                               // up to 3 on page 1, or 2 beside a headlines box
     { "name": "News", "stories": [
         { "headline": "≤ 8 words", "body": "15–22 words", "source": "Reuters" }
     ] }

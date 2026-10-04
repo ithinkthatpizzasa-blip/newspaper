@@ -105,6 +105,17 @@
   </main>
 
   <section class="sections">
+    {% if hl_items %}
+    <div class="section headlines" data-fit="{{ hl_title }}">
+      <h3>{{ hl_title }}{% if hl_as_of %} <small>{{ hl_as_of }}</small>{% endif %}</h3>
+      <ol class="hl-list">
+        {% for it in hl_items %}
+        <li><span class="hl-h">{{ it.headline }}</span>{% if it.summary %}<span class="hl-s">{{ it.summary }}</span>{% endif %}</li>
+        {% endfor %}
+      </ol>
+      {% if hl_source %}<span class="src">Source: {{ hl_source }}</span>{% endif %}
+    </div>
+    {% endif %}
     {% for s in sections %}
     <div class="section" data-fit="{{ s.name }}">
       <h3>{{ s.name }}</h3>

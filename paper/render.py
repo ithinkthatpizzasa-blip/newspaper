@@ -24,6 +24,9 @@ FONTS = PKG / "fonts"
 BUILD = prof.ROOT / "build"
 EDITIONS = prof.ROOT / "editions"
 
+# Sections a front-page headlines box makes redundant (dropped first when space runs out).
+GENERAL_NEWS = {"news", "general news", "top stories", "headlines", "uk", "world"}
+
 FONT_FACES = [
     ("UnifrakturMaguntia", 400, "normal", "UnifrakturMaguntia-400.ttf"),
     ("Playfair Display", 700, "normal", "PlayfairDisplay-700.ttf"),
@@ -129,7 +132,13 @@ def build_context(profile: dict, edition: dict, embed_fonts: bool = False) -> di
     inbox = ed.get("inbox") or {}
     local = (ed.get("local") or {}).get("items") or []
     extras = {k: v for k, v in (ed.get("extras") or {}).items() if v}
-    sections = [s for s in ed.get("sections") or [] if s.get("stories")][:3]
+    box = ed.get("headlines") or {}
+    hl_items = [h for h in box.get("items") or [] if h.get("headline")]
+    # The front-page row has three columns; a headlines box takes the first one.
+    sections = [s for s in ed.get("sections") or [] if s.get("stories")]
+    if hl_items:  # the headlines already cover general news
+        sections = [s for s in sections if s["name"].strip().lower() not in GENERAL_NEWS] or sections
+    sections = sections[: 2 if hl_items else 3]
 
     if panels:
         ear_right = f"{comic.get('title') or 'Today’s comic'}, starring you. Page 2."
@@ -166,12 +175,17 @@ def build_context(profile: dict, edition: dict, embed_fonts: bool = False) -> di
         "day_name": day.strftime("%A"),
         "edition_no": prof.edition_number(profile, day),
         "volume": prof.volume(profile, day),
-        "topics": " · ".join(s["name"] for s in sections) or "Your daily paper",
+        "topics": " · ".join(([box.get("title") or "Headlines"] if hl_items else [])
+                             + [s["name"] for s in sections]) or "Your daily paper",
         "sun_line": sun_line,
         "wx": wx,
         "lead": ed.get("lead") or {"headline": "Good morning"},
         "day": ed.get("your_day") or {},
         "sections": sections,
+        "hl_items": hl_items,
+        "hl_title": box.get("title") or "Headlines",
+        "hl_source": box.get("source") or "",
+        "hl_as_of": box.get("as_of") or "",
         "inbox": inbox,
         "newsletter_names": ", ".join(names),
         "local": local,

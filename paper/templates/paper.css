@@ -129,6 +129,20 @@ p { margin: 0; }
   font: 600 9pt/1 var(--label); letter-spacing: .14em; text-transform: uppercase; margin: 0 0 2mm;
   padding-bottom: 1.3mm; border-bottom: .8pt solid var(--ink);
 }
+.section h3 small { float: right; font: 500 6.4pt/1.4 var(--label); color: var(--muted); letter-spacing: .08em; }
+.hl-list { list-style: none; margin: 0; padding: 0; counter-reset: hl; }
+.hl-list li {
+  counter-increment: hl; position: relative; padding: 0 0 1.5mm 6.5mm; margin-bottom: 1.5mm;
+  border-bottom: .5pt solid var(--hair);
+}
+.hl-list li:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+.hl-list li::before {
+  content: counter(hl); position: absolute; left: 0; top: .2mm;
+  font: 900 12.5pt/1 var(--display); color: var(--accent);
+}
+.hl-h { display: block; font: 700 9.7pt/1.17 var(--display); text-wrap: balance; }
+.hl-s { display: block; margin-top: .5mm; font-size: 7.9pt; line-height: 1.26; color: #333; }
+.headlines .src { margin-top: 1.6mm; }
 .story { padding-bottom: 2mm; margin-bottom: 2mm; border-bottom: .5pt solid var(--hair); }
 .story:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
 .story h4 { font: 700 11.2pt/1.13 var(--display); margin: 0 0 1.1mm; text-wrap: balance; }

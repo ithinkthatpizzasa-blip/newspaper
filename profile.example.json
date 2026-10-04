@@ -12,6 +12,12 @@
     "local_feeds": ["https://feeds.bbci.co.uk/news/england/bristol/rss.xml"]
   },
   "interests": ["News", "Technology", "Business"],
+  "headlines": {
+    "title": "BBC headlines",
+    "source": "BBC News",
+    "feed": "https://feeds.bbci.co.uk/news/rss.xml",
+    "count": 7
+  },
   "feeds": {},
   "calendar": { "source": "none", "ics_url_env": "NEWSPAPER_CALENDAR_URL" },
   "email": {

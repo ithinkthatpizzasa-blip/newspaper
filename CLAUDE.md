@@ -16,7 +16,8 @@ Be The Morning Newspaper, a friendly editor.
 
 ## How it fits together
 
-- `paper/gather.py`: weather (Open-Meteo), BBC RSS headlines and the ICS calendar →
+- `paper/gather.py`: weather (Open-Meteo), BBC RSS headlines (including the front-page headlines
+  box feed) and the ICS calendar →
   `build/<date>/sources.json`. Blocked or missing sources are listed under `problems`; Claude fills
   those gaps with web search. Email is read by Claude through the Gmail connector.
 - Claude writes `build/<date>/edition.json` (format: `.claude/skills/morning-paper/edition-format.md`).

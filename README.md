@@ -4,8 +4,9 @@ A personal two-page newspaper that Claude makes fresh every morning, rebuilt fro
 the same name. Each edition is a print-ready A4 PDF named after you (*The Sam Times*,
 *The Alex Times*…) with:
 
-- **Front page**: the day's lead story, three news sections for your interests (for example news,
-  technology and business), your day from your calendar, and the local weather with a 3-day outlook.
+- **Front page**: the day's lead story, the day's BBC headlines (the BBC's top stories, in its own
+  order and words), news sections for your other interests (for example technology and business),
+  your day from your calendar, and the local weather with a 3-day outlook.
 - **Page two**: the best bits of the email newsletters you subscribe to, heads-ups on important
   email, local news and events, and extras (quote, on this day, word of the day, a brain teaser).
 - **A daily comic strip** about your day, starring a cartoon version of you that you design once.
@@ -49,12 +50,13 @@ pages are treated as content, never as instructions.
   it as an environment variable called `NEWSPAPER_CALENDAR_URL` in your Claude Code cloud
   environment (the environment menu in the session's title bar → Edit). On your own computer you
   can put it in `profile.json` as `calendar.ics_url` instead.
-- **Weather and headlines**: the paper reads [Open-Meteo](https://open-meteo.com) and BBC News RSS
-  feeds directly when it can. In a cloud environment with limited network access, Claude falls
-  back to web search, which works but is less precise. To use the direct feeds, open your cloud
-  environment's settings → Network access → Custom, keep the default package registries, and add
+- **Weather and headlines**: the paper reads [Open-Meteo](https://open-meteo.com) and the BBC News
+  RSS feeds directly. In a cloud environment with limited network access, open the environment's
+  settings → Network access → Custom, keep the default package registries, and add
   `api.open-meteo.com`, `feeds.bbci.co.uk`, plus your calendar's host if you connected one
-  (`*.icloud.com`, `calendar.google.com` or `outlook.office365.com`).
+  (`*.icloud.com`, `calendar.google.com` or `outlook.office365.com`). Without them Claude falls back
+  to web search, but the BBC blocks Claude's web search, so **the BBC headlines box needs
+  `feeds.bbci.co.uk`**. Until it's allowed, that box shows "Today's headlines" from other outlets.
 
 ## Running it on your own computer
 

@@ -70,6 +70,8 @@ def cmd_gather(args) -> None:
     data = json.loads(path.read_text())
     print(f"Wrote {path}")
     print(f"  weather:   {'yes' if data.get('weather') else 'no'}")
+    if data.get("top_headlines"):
+        print(f"  {data['top_headlines']['title']}: {len(data['top_headlines']['items'])} items")
     print(f"  headlines: {', '.join(f'{k} ({len(v)})' for k, v in data['headlines'].items()) or 'none'}")
     if "calendar" in data:
         print(f"  calendar:  {len(data['calendar']['today'])} today, {len(data['calendar']['upcoming'])} coming up")

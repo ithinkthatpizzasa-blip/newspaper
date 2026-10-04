@@ -46,27 +46,37 @@
     ],
     "source": "Sample"
   },
+  "headlines": {
+    "title": "BBC headlines",
+    "source": "BBC News",
+    "as_of": "6:40am",
+    "items": [
+      {
+        "headline": "Sample: the BBC's top story of the morning goes here",
+        "summary": "Its one-line summary, trimmed from the BBC's own description."
+      },
+      {
+        "headline": "Sample: the second story, in the BBC's own order"
+      },
+      {
+        "headline": "Sample: headlines keep the BBC's wording",
+        "summary": "A summary only appears when the headline needs explaining."
+      },
+      {
+        "headline": "Sample: a world news story"
+      },
+      {
+        "headline": "Sample: a politics story from Westminster"
+      },
+      {
+        "headline": "Sample: a science or health story"
+      },
+      {
+        "headline": "Sample: something lighter to finish on"
+      }
+    ]
+  },
   "sections": [
-    {
-      "name": "News",
-      "stories": [
-        {
-          "headline": "Library extends opening hours for exam season",
-          "body": "Sample brief: three branches will stay open until 9pm on weekdays from November, with study rooms bookable online.",
-          "source": "Sample"
-        },
-        {
-          "headline": "New footbridge opens after two-year build",
-          "body": "Sample brief: walkers and cyclists can now cross the river without the long detour by the ring road.",
-          "source": "Sample"
-        },
-        {
-          "headline": "Volunteers plant 500 trees along railway line",
-          "body": "Sample brief: the oak and rowan saplings should form a green corridor for birds and bats within ten years.",
-          "source": "Sample"
-        }
-      ]
-    },
     {
       "name": "Technology",
       "stories": [

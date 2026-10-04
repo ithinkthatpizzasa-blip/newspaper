@@ -24,7 +24,9 @@ Work through the steps in order. A full run takes a while; that's expected (the 
 ## 1. Gather
 
 Run `python3 -m paper gather`. It writes `build/<date>/sources.json` with weather, RSS headlines per
-interest, local headlines and the calendar, plus a `problems` list. Fill every gap it reports:
+interest, local headlines and the calendar, plus a `problems` list. If `profile.headlines` is set it
+also reads that feed (the BBC's top stories by default) into `top_headlines`, in the feed's order.
+Fill every gap it reports:
 
 - **Weather blocked or missing**: WebSearch `<city> weather forecast <weekday> <date>` (Met Office or
   BBC Weather pages) for high/low, conditions, chance of rain, wind, sunrise/sunset and the next
@@ -33,6 +35,12 @@ interest, local headlines and the calendar, plus a `problems` list. Fill every g
   `UK news today <date>`, `technology news <date>`, `business news <date>`), plus `<city> news` and
   `<city> events this week`. Use reputable outlets (BBC, Reuters, Guardian, FT, Sky, the local
   paper) and only stories from the last 36 hours. Check dates in the results.
+- **Headlines feed blocked or missing**: the BBC blocks Claude's web search, so BBC headlines can
+  only come from the feed itself. If a BBC News newsletter arrived in the last 24 hours (step 2),
+  use its top stories and keep the title "BBC headlines". Otherwise fill the box with the day's top
+  stories from other outlets via web search, retitle it "Today's headlines", set `source` to the
+  outlets, and tell the reader in the report that `feeds.bbci.co.uk` needs allowing in the
+  environment's network settings.
 - **No calendar**: leave `your_day.events` empty and write a short, useful `note` instead (for
   example a weather-based tip, or what's on locally today).
 
@@ -64,7 +72,8 @@ Write `build/<date>/edition.json` following [edition-format.md](edition-format.m
 | Box | Target |
 | --- | --- |
 | Lead story | 230 to 300 words in 4 to 6 paragraphs, plus a standfirst |
-| Each of the 3 sections | 3 stories: headline up to 8 words, 15 to 22 words of text |
+| Headlines box | 6 to 8 headlines; a summary of up to 12 words only where the headline needs it |
+| Each section | 3 stories: headline up to 8 words, 15 to 22 words of text |
 | From your inbox | 260 to 340 words across the newsletters |
 | Around `<city>` | 3 or 4 items, 150 to 210 words in total |
 | Heads-up | at most 4 items, 22 words each |
@@ -74,6 +83,11 @@ Editorial rules:
 
 - The lead is the most important story for this reader today (their interests and location).
   Sections follow `profile.interests`; don't repeat a story in two places.
+- **Headlines box** (when `profile.headlines` is set): the first items of `top_headlines` in the
+  feed's order, with the headline text copied exactly. Skip items older than 36 hours, duplicates
+  and video-only items. It is a faithful list, so it may overlap with the lead. It takes the first
+  column of the front-page row, leaving room for two sections: write those for the interests other
+  than general news (a section called "News" is dropped first). Set `as_of` to the time you read it.
 - Only facts from sources you actually read today. No invented quotes, numbers or events. Put the
   outlet in `source` and list everything in `sources`.
 - The reader may be a teenager: cover hard news soberly, without graphic detail.

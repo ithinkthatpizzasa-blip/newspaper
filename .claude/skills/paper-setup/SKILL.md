@@ -32,6 +32,13 @@ Technology, Business, Science, Sport, Politics, Entertainment, Health. Page 1 ha
 sections, so if they pick more, ask which three matter most. Save them in `interests` as the
 section names to print, for example `["News", "Technology", "Business"]`.
 
+Then ask: "Want the day's BBC headlines on the front page?" If yes (a good default for UK readers),
+save `"headlines": {"title": "BBC headlines", "source": "BBC News", "feed":
+"https://feeds.bbci.co.uk/news/rss.xml", "count": 7}`. Any RSS feed works the same way. The box takes
+one of the three front-page columns, covering general news. In a cloud environment the feed's host
+(`feeds.bbci.co.uk`) has to be allowed under Network access, because the BBC blocks Claude's web
+search.
+
 ## 4. Calendar
 
 "Let's connect your calendar, so your newspaper can see what's on your day and what's coming up."

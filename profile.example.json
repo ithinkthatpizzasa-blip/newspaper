@@ -1,0 +1,42 @@
+{
+  "reader": { "name": "Alex" },
+  "paper_name": "The Alex Times",
+  "tagline": "Printed fresh for Alex every morning",
+  "started": "2026-10-01",
+  "location": {
+    "city": "Bristol",
+    "country": "UK",
+    "latitude": 51.4545,
+    "longitude": -2.5879,
+    "timezone": "Europe/London",
+    "local_feeds": ["https://feeds.bbci.co.uk/news/england/bristol/rss.xml"]
+  },
+  "interests": ["News", "Technology", "Business"],
+  "feeds": {},
+  "calendar": { "source": "none", "ics_url_env": "NEWSPAPER_CALENDAR_URL" },
+  "email": {
+    "provider": "gmail",
+    "newsletters": [
+      { "name": "BBC", "query": "from:email.bbc.co.uk" },
+      { "name": "Claude", "query": "from:email.claude.com" }
+    ],
+    "heads_up": true
+  },
+  "privacy": {
+    "hide_money": true,
+    "hide_addresses": true,
+    "hide_tracking_numbers": true,
+    "hide_medical_details": true
+  },
+  "avatar": {
+    "hair_style": "curly",
+    "hair_color": "brown",
+    "glasses": true,
+    "facial_hair": "none",
+    "outfit": "hoodie",
+    "outfit_color": "grey",
+    "skin": "none",
+    "freckles": false
+  },
+  "delivery": { "time": "06:45", "print": false, "printer": "" }
+}

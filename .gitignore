@@ -1,0 +1,10 @@
+# Personal: this repo is public, so the reader's details and papers never get committed.
+profile.json
+editions/
+build/
+.env
+
+__pycache__/
+*.pyc
+.venv/
+.DS_Store

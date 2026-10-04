@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>{{ paper_name }} · {{ date_long }}</title>
+<style>{{ fonts_css }}
+{{ css }}</style>
+</head>
+<body>
+
+{# =============================================================== PAGE ONE #}
+<section class="page page-1">
+  <div class="topline">
+    <span>Vol. {{ volume }} · No. {{ edition_no }}</span>
+    <span class="tag">{{ tagline }}</span>
+    <span>{{ city }} edition</span>
+  </div>
+
+  <header class="mast">
+    <div class="ear">
+      {% if wx %}
+        {{ icon(wx.kind) }}
+        <div><span class="label">Weather</span><span class="temps">{{ temp(wx.high) }} / {{ temp(wx.low) }}</span>{{ wx.short or wx.summary }}</div>
+      {% else %}
+        <div><span class="label">Weather</span>See {{ city }}'s forecast inside.</div>
+      {% endif %}
+    </div>
+    <h1 data-shrink>{{ paper_name }}</h1>
+    <div class="ear">
+      {{ face }}
+      <div><span class="label">Inside</span>{{ ear_right }}</div>
+    </div>
+  </header>
+
+  <div class="dateline">
+    <span class="date">{{ date_long }}</span>
+    <span>{{ topics }}</span>
+    <span>{{ sun_line }}</span>
+  </div>
+
+  <main class="front">
+    <article class="lead">
+      {% if lead.section %}<div class="kicker">{{ lead.section }}</div>{% endif %}
+      <h2>{{ lead.headline }}</h2>
+      {% if lead.standfirst %}<p class="standfirst">{{ lead.standfirst }}</p>{% endif %}
+      <div class="byline">By The Morning Newspaper{% if lead.source %} · Source: {{ lead.source }}{% endif %}</div>
+      <div class="body" data-fit="lead story">
+        {% for para in paras(lead.body) %}<p>{{ para }}</p>{% endfor %}
+      </div>
+    </article>
+
+    <aside class="side">
+      <section class="box" data-fit="your day">
+        <h3>Your day <small>{{ day_name }}</small></h3>
+        {% if day.events %}
+          <ul class="agenda">
+          {% for e in day.events %}
+            <li><span class="t">{{ e.time or "All day" }}</span><span>{{ e.title }}{% if e.where %}<span class="w">{{ e.where }}</span>{% endif %}</span></li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+        {% if day.note %}<p class="note">{{ day.note }}</p>{% endif %}
+        {% if day.upcoming %}
+          <div class="sub">Coming up</div>
+          <ul class="agenda">
+          {% for e in day.upcoming %}
+            <li><span class="t">{{ e.when }}</span><span>{{ e.title }}</span></li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+        {% if not day.events and not day.note and not day.upcoming %}
+          <p class="note">Nothing on the calendar. Connect one and your day appears here.</p>
+        {% endif %}
+      </section>
+
+      <section class="box grow" data-fit="weather">
+        <h3>Weather <small>{{ city }}</small></h3>
+        {% if wx %}
+          <div class="wx-now">
+            {{ icon(wx.kind) }}
+            <div>
+              <div class="temps">{{ temp(wx.high) }} <span>/ {{ temp(wx.low) }}</span></div>
+              <div class="summary">{{ wx.summary }}</div>
+            </div>
+          </div>
+          <ul class="wx-facts">
+            {% if wx.rain_chance is not none %}<li><b>Rain</b> {{ wx.rain_chance }}% chance</li>{% endif %}
+            {% if wx.wind %}<li><b>Wind</b> {{ wx.wind }}</li>{% endif %}
+            {% if wx.sunrise %}<li><b>Sun</b> up {{ wx.sunrise }}, down {{ wx.sunset }}</li>{% endif %}
+          </ul>
+          {% if wx.advice %}<div class="advice">{{ wx.advice }}</div>{% endif %}
+          {% if wx.outlook %}
+            <div class="outlook">
+            {% for o in wx.outlook[:3] %}
+              <div><span class="d">{{ o.day }}</span>{{ icon(o.kind) }}{{ temp(o.high) }} / {{ temp(o.low) }}</div>
+            {% endfor %}
+            </div>
+          {% endif %}
+        {% else %}
+          <p class="empty">No forecast today.</p>
+        {% endif %}
+      </section>
+
+    </aside>
+  </main>
+
+  <section class="sections">
+    {% for s in sections %}
+    <div class="section" data-fit="{{ s.name }}">
+      <h3>{{ s.name }}</h3>
+      {% for st in s.stories %}
+      <div class="story">
+        <h4>{{ st.headline }}</h4>
+        <p>{{ st.body }}</p>
+        {% if st.source %}<span class="src">{{ st.source }}</span>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </section>
+</section>
+
+{# =============================================================== PAGE TWO #}
+<section class="page page-2">
+  <div class="runner">
+    <span>{{ date_long }}</span>
+    <span class="name">{{ paper_name }}</span>
+    <span>Page 2</span>
+  </div>
+
+  <div class="p2">
+    <div class="col">
+      <section class="box grow" data-fit="from your inbox">
+        <h3>From your inbox <small>{{ newsletter_names }}</small></h3>
+        {% for nl in inbox.newsletters %}
+        <div class="newsletter">
+          <div class="nl-from">{{ nl.from }}</div>
+          {% if nl.headline %}<h4>{{ nl.headline }}</h4>{% endif %}
+          {% if nl.summary %}<p>{{ nl.summary }}</p>{% endif %}
+          {% if nl.points %}<ul>{% for pt in nl.points %}<li>{{ pt }}</li>{% endfor %}</ul>{% endif %}
+        </div>
+        {% else %}
+        <p class="empty">No new newsletters since the last edition.</p>
+        {% endfor %}
+      </section>
+    </div>
+
+    <div class="col">
+      <section class="box grow local" data-fit="around {{ city }}">
+        <h3>Around {{ city }}</h3>
+        {% for it in local %}
+        <div class="item">
+          {% if it.label %}<span class="tag-label">{{ it.label }}{% if it.when %} <span class="when">· {{ it.when }}</span>{% endif %}</span>{% endif %}
+          <h4>{{ it.headline }}</h4>
+          {% if it.body %}<p>{{ it.body }}</p>{% endif %}
+        </div>
+        {% else %}
+        <p class="empty">Quiet day locally.</p>
+        {% endfor %}
+      </section>
+
+      {% if inbox.heads_up %}
+      <section class="box" data-fit="heads-up">
+        <h3>Heads-up <small>important email</small></h3>
+        <ul class="heads-up">
+          {% for h in inbox.heads_up %}<li>{% if h.from %}<b>{{ h.from }}:</b> {% endif %}{{ h.text }}</li>{% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if comic_html %}
+  <section class="comic">
+    <div class="comic-head">
+      <h3>{{ comic.title or (reader ~ "'s " ~ day_name) }}</h3>
+      <small>Drawn this morning, starring {{ reader }}</small>
+    </div>
+    <div class="strip n{{ n_panels }}">{{ comic_html }}</div>
+  </section>
+  {% endif %}
+
+  {% if extras %}
+  <section class="extras">
+    {% if extras.quote %}
+    <div class="extra" data-fit="quote">
+      <h5>Quote of the day</h5>
+      <p class="quote">“{{ extras.quote.text }}”</p>
+      {% if extras.quote.by %}<span class="by">{{ extras.quote.by }}</span>{% endif %}
+    </div>
+    {% endif %}
+    {% if extras.on_this_day %}
+    <div class="extra" data-fit="on this day">
+      <h5>On this day</h5>
+      <p>{% if extras.on_this_day.year %}<span class="year">{{ extras.on_this_day.year }}</span>{% endif %}{{ extras.on_this_day.text }}</p>
+    </div>
+    {% endif %}
+    {% if extras.word %}
+    <div class="extra" data-fit="word of the day">
+      <h5>Word of the day</h5>
+      <span class="word">{{ extras.word.word }}</span>
+      <p>{{ extras.word.meaning }}</p>
+    </div>
+    {% endif %}
+    {% if extras.puzzle %}
+    <div class="extra" data-fit="brain teaser">
+      <h5>Brain teaser</h5>
+      <p>{{ extras.puzzle.question }}</p>
+      {% if extras.puzzle.answer %}<p class="answer">Answer: {{ extras.puzzle.answer }}</p>{% endif %}
+    </div>
+    {% endif %}
+  </section>
+  {% endif %}
+
+  <footer class="colophon">
+    <span>Made for {{ reader }} by The Morning Newspaper · Private copy, please don't share</span>
+    <span>{% if sources %}Sources: {{ sources }}{% endif %}</span>
+  </footer>
+</section>
+
+<script>
+  // Shrink anything marked data-shrink (the masthead) until it fits its column.
+  document.fonts.ready.then(() => {
+    document.querySelectorAll('[data-shrink]').forEach(el => {
+      let size = parseFloat(getComputedStyle(el).fontSize);
+      while (el.scrollWidth > el.clientWidth + 1 && size > 14) { size -= 0.5; el.style.fontSize = size + 'px'; }
+    });
+    document.body.dataset.ready = '1';
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+{
+  "date": "2026-10-05",
+  "weather": {
+    "kind": "showers",
+    "short": "Sunny spells, a shower by teatime",
+    "summary": "Bright start, then clouds bubble up with a passing shower after 4pm.",
+    "high": 15,
+    "low": 8,
+    "rain_chance": 40,
+    "wind": "Breezy from the south-west, gusts to 20 mph",
+    "sunrise": "07:16",
+    "sunset": "18:39",
+    "advice": "Sunglasses for the morning, a brolly for the walk home, and a jumper for after dark.",
+    "outlook": [
+      {
+        "day": "Tue",
+        "kind": "rain",
+        "high": 14,
+        "low": 9
+      },
+      {
+        "day": "Wed",
+        "kind": "partly-cloudy",
+        "high": 16,
+        "low": 10
+      },
+      {
+        "day": "Thu",
+        "kind": "clear",
+        "high": 17,
+        "low": 9
+      }
+    ],
+    "source": "Sample forecast"
+  },
+  "lead": {
+    "section": "Sample edition",
+    "headline": "City trials car-free Sundays as cafés spill onto the streets",
+    "standfirst": "A made-up story to show how the front page looks: the lead gets a big headline, a short summary, and around 250 words across two columns.",
+    "body": [
+      "This is a sample edition of the paper, so none of these stories are real. The lead story sits at the top of the front page, where a real edition puts the most important news of the morning, chosen from the reader's interests and written fresh in plain English.",
+      "In this pretend version of events, the council closed six streets to cars for a whole Sunday. Cafés put tables in the road, a brass band played outside the library, and children chalked a hopscotch grid that ran for almost a hundred metres.",
+      "Shopkeepers were split. A bakery owner said she sold out of cinnamon buns by eleven, while a hardware shop said trade was slower than usual because customers couldn't park outside. Bus drivers reported smoother journeys on the routes that skirted the closed roads.",
+      "The council says it will publish figures on air quality, footfall and bus times before deciding whether to repeat the trial each month. A public meeting is planned for next week, and an online survey stays open until the end of the month.",
+      "A real edition would finish here with what happens next and where the story came from. The source line under the headline tells the reader which outlet reported it, so they can read more if they want to."
+    ],
+    "source": "Sample"
+  },
+  "sections": [
+    {
+      "name": "News",
+      "stories": [
+        {
+          "headline": "Library extends opening hours for exam season",
+          "body": "Sample brief: three branches will stay open until 9pm on weekdays from November, with study rooms bookable online.",
+          "source": "Sample"
+        },
+        {
+          "headline": "New footbridge opens after two-year build",
+          "body": "Sample brief: walkers and cyclists can now cross the river without the long detour by the ring road.",
+          "source": "Sample"
+        },
+        {
+          "headline": "Volunteers plant 500 trees along railway line",
+          "body": "Sample brief: the oak and rowan saplings should form a green corridor for birds and bats within ten years.",
+          "source": "Sample"
+        }
+      ]
+    },
+    {
+      "name": "Technology",
+      "stories": [
+        {
+          "headline": "Phone makers agree on longer software updates",
+          "body": "Sample brief: phones sold from next year will get security fixes for at least seven years.",
+          "source": "Sample"
+        },
+        {
+          "headline": "School coding club builds a weather station",
+          "body": "Sample brief: pupils wired a cheap circuit board to a rain gauge and post live readings every ten minutes.",
+          "source": "Sample"
+        },
+        {
+          "headline": "AI helpers learn to say 'I'm not sure'",
+          "body": "Sample brief: researchers say assistants that admit uncertainty are trusted more by the people using them.",
+          "source": "Sample"
+        }
+      ]
+    },
+    {
+      "name": "Business",
+      "stories": [
+        {
+          "headline": "High street sees busiest September in years",
+          "body": "Sample brief: footfall rose for the third month running, helped by warm weather and new independent shops.",
+          "source": "Sample"
+        },
+        {
+          "headline": "Train fares to be frozen for another year",
+          "body": "Sample brief: the freeze covers season tickets and off-peak returns, though some timetables may be trimmed.",
+          "source": "Sample"
+        },
+        {
+          "headline": "Local bakery chain plans ten new stores",
+          "body": "Sample brief: the family business started with one oven in a garage and now employs more than 200 people.",
+          "source": "Sample"
+        }
+      ]
+    }
+  ],
+  "your_day": {
+    "events": [
+      {
+        "time": "08:40",
+        "title": "Registration"
+      },
+      {
+        "time": "09:00",
+        "title": "Maths",
+        "where": "Room 12"
+      },
+      {
+        "time": "13:30",
+        "title": "Dentist with Dr Smith",
+        "where": "14 Station Road"
+      },
+      {
+        "time": "16:15",
+        "title": "Football practice"
+      }
+    ],
+    "upcoming": [
+      {
+        "when": "Wed",
+        "title": "History essay due"
+      },
+      {
+        "when": "Fri",
+        "title": "Cinema with friends"
+      }
+    ]
+  },
+  "inbox": {
+    "newsletters": [
+      {
+        "from": "BBC",
+        "headline": "Energy bills set for their biggest rise in four years",
+        "summary": "Sample summary: the newsletter's lead story in two or three sentences, explaining what happened and why it matters, so the reader doesn't need to open the email at all.",
+        "points": [
+          "Sample point: a second story from the same email, boiled down to a single line that still makes sense on its own.",
+          "Sample point: a third story worth knowing about, with the one detail that makes it interesting.",
+          "Sample point: something lighter to finish on, like a new drama or a quirky science find.",
+          "Sample point: what to watch or listen to this week, if the newsletter recommends anything good.",
+          "Sample point: a science story that's fun to tell someone about at lunch.",
+          "Sample point: the sport headline everyone will be talking about."
+        ]
+      },
+      {
+        "from": "Claude",
+        "headline": "This week in Claude Code",
+        "summary": "Sample summary: what changed this week, written as a short paragraph rather than bullet points, so the reader gets the gist without opening the email. A real edition would mention the features most useful to the reader.",
+        "points": [
+          "Sample point: a new feature and what it's good for.",
+          "Sample point: a handy tip to try today.",
+          "Sample point: anything that changes limits, prices or plans.",
+          "Sample point: a shortcut that saves a few minutes every day.",
+          "Sample point: a new integration worth switching on.",
+          "Sample point: where to read the full changelog."
+        ]
+      }
+    ],
+    "heads_up": [
+      {
+        "from": "Online shop",
+        "text": "Your order is out for delivery today, tracking JD014600003814512345. Total £24.99."
+      },
+      {
+        "from": "School office",
+        "text": "Reply slip for the museum trip is due Thursday."
+      }
+    ]
+  },
+  "local": {
+    "items": [
+      {
+        "label": "Event",
+        "when": "Sat",
+        "headline": "Night market returns to the harbour",
+        "body": "Sample: street food, live music and a lantern parade from 5pm. Entry is free and the ferry runs late."
+      },
+      {
+        "label": "News",
+        "headline": "Swimming pool reopens after refit",
+        "body": "Sample: new changing rooms, a learner pool and longer weekend sessions for families, starting this week."
+      },
+      {
+        "label": "Sport",
+        "when": "Sun",
+        "headline": "Home side chase fourth win in a row",
+        "body": "Sample: kick-off is at 3pm, with tickets still available at the gate and a fan zone from noon."
+      },
+      {
+        "label": "What's on",
+        "when": "Thu",
+        "headline": "Free science talk at the museum",
+        "body": "Sample: an astronomer explains how to spot Saturn's rings with binoculars. Doors open at 6.30pm."
+      },
+      {
+        "label": "Community",
+        "when": "Sun",
+        "headline": "Litter pick along the river path",
+        "body": "Sample: volunteers meet at the boathouse at 10am. Gloves, grabbers and hot drinks are provided, and families are welcome."
+      }
+    ]
+  },
+  "comic": {
+    "title": "Alex's Monday",
+    "panels": [
+      {
+        "scene": "bedroom",
+        "mood": "sleepy",
+        "caption": "7:00am",
+        "speech": "Five more minutes...",
+        "sfx": "BEEP!"
+      },
+      {
+        "scene": "kitchen",
+        "mood": "surprised",
+        "pose": "right",
+        "speech": "Wait, the paper drew ME?",
+        "prop": "newspaper"
+      },
+      {
+        "scene": "street",
+        "mood": "worried",
+        "pose": "left",
+        "caption": "4:05pm",
+        "speech": "It said showers by teatime...",
+        "prop": "umbrella"
+      },
+      {
+        "scene": "sofa",
+        "mood": "proud",
+        "speech": "Dry socks. Paper was right!",
+        "prop": "mug"
+      }
+    ]
+  },
+  "extras": {
+    "quote": {
+      "text": "The best way to predict the future is to invent it.",
+      "by": "Alan Kay"
+    },
+    "on_this_day": {
+      "year": 1962,
+      "text": "The Beatles release their first single, “Love Me Do”."
+    },
+    "word": {
+      "word": "Petrichor",
+      "meaning": "The pleasant, earthy smell after rain falls on dry ground."
+    },
+    "puzzle": {
+      "question": "What has keys but can't open locks?",
+      "answer": "A piano"
+    }
+  },
+  "sources": [
+    "Sample content only"
+  ]
+}
